@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration packages="com.epam.ta.reportportal.log4j.appender" status="INFO">
+    <Appenders>
+        <Console name="Console">
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout>
+                <Pattern>%d{HH:mm:ss} %p %c{2} [%t] %l %m%n</Pattern>
+            </PatternLayout>
+        </Console>
+        <RollingFile
+                name="RollingFile"
+                fileName="target/logs/Java-2020CW7.log"
+                filePattern="target/logs/%d{dd-MMM}/Java-2020CW7.log"
+                ignoreExceptions="false"
+                append="true">
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout>
+                <Pattern>%d{HH:mm:ss} %p %c{2} [%t] %l %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>/
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+        <ReportPortalLog4j2Appender name="ReportPortal">
+            <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout
+                    pattern="%d [%t] %-5level %logger{36} - %msg%n%throwable"/>
+        </ReportPortalLog4j2Appender>
+    </Appenders>
+    <Loggers>
+        <Root level="trace">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+            <AppenderRef ref="ReportPortal"/>
+        </Root>
+    </Loggers>
+</Configuration>

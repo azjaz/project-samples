@@ -1,0 +1,33 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Critical path tests" parallel="methods" thread-count="4" data-provider-thread-count="4">
+    <listeners>
+        <listener class-name="utils.TestListener"/>
+    </listeners>
+    <test name="Critical path tests for order screen">
+        <classes>
+            <class name="tests.criticalpath.order.DiscountForCarryoutTest"/>
+            <class name="tests.criticalpath.order.OrderPizzaWithValidUserDataTest"/>
+            <class name="tests.criticalpath.order.OnlinePaymentTest"/>
+            <class name="tests.criticalpath.order.PromoCodeTest"/>
+            <class name="tests.criticalpath.order.SelectTimeOptionTest"/>
+            <class name="tests.criticalpath.order.ChangePizzaAmountInOrderTest"/>
+            <class name="tests.criticalpath.order.UserAgreementAndConsentTest"/>
+            <class name="tests.criticalpath.order.negative.OrderPizzaWithEmptyUserDataTest"/>
+            <class name="tests.criticalpath.order.negative.OrderPizzaWithInvalidAddressDeliveryTest"/>
+        </classes>
+    </test>
+    <test name="Critical path tests for menu screen">
+        <classes>
+            <class name="tests.criticalpath.menu.EditOrderInCartTest"/>
+            <class name="tests.criticalpath.menu.CreateOrderFromProductWidgetTest"/>
+            <class name="tests.criticalpath.menu.CreateOwnPizzaTest"/>
+            <class name="tests.criticalpath.menu.CreateCustomPizzaTest"/>
+            <class name="tests.criticalpath.menu.FilterIngredientTest"/>
+        </classes>
+    </test>
+    <test name="Critical path tests with BDD">
+        <classes>
+            <class name="steps.RunCucumberTest"/>
+        </classes>
+    </test>
+</suite>
